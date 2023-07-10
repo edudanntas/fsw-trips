@@ -1,4 +1,5 @@
 'use client'
+import Button from '@/components/Button';
 import CurrencyInput from '@/components/CurrencyInput';
 import DatePicker from '@/components/DatePicker';
 import Input from '@/components/Input';
@@ -16,6 +17,8 @@ const TripSearch = () => {
                     <DatePicker placeholderText='Data de ida' onChange={() => { }} />
                     <CurrencyInput placeholder='Orçamento' />
                 </div>
+
+                <Button>Procurar</Button>
             </div>
         </div>
     )
