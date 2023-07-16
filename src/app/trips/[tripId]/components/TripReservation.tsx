@@ -5,6 +5,7 @@ import DatePicker from '@/components/DatePicker';
 import Input from '@/components/Input';
 import { Trip } from '@prisma/client';
 import { error } from 'console';
+import { differenceInDays } from 'date-fns';
 import * as React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
@@ -12,6 +13,7 @@ interface TripReservationProps {
     tripStartDate: Date;
     tripEndDate: Date;
     maxGuests: number;
+    pricePerDay: number;
 }
 
 interface TripReservationForm {
@@ -20,7 +22,7 @@ interface TripReservationForm {
     endDate: Date | null;
 }
 
-const TripReservation = ({ maxGuests, tripStartDate, tripEndDate }: TripReservationProps) => {
+const TripReservation = ({ maxGuests, tripStartDate, tripEndDate, pricePerDay }: TripReservationProps) => {
     const { register, handleSubmit, formState: { errors }, control, watch } = useForm<TripReservationForm>()
 
     const onSubmit = (data: any) => {
@@ -28,6 +30,7 @@ const TripReservation = ({ maxGuests, tripStartDate, tripEndDate }: TripReservat
     }
 
     const startDate = watch("startDate");
+    const endDate = watch("endDate");
 
     return (
         <div className='flex flex-col px-5'>
@@ -82,8 +85,8 @@ const TripReservation = ({ maxGuests, tripStartDate, tripEndDate }: TripReservat
                 errorMessage={errors?.guests?.message}
             />
             <div className="flex justify-between mt-3">
-                <p className='font-medium text-sm text-secondary'>Total:</p>
-                <p className='font-medium text-sm text-secondary'>R$3000</p>
+                <p className='font-medium text-sm text-secondary'>{(startDate && endDate) ? `Total (${differenceInDays(endDate, startDate)} Noites)` : "Total (0 Noites)"}</p>
+                <p className='font-medium text-sm text-secondary'>{(startDate && endDate) ? `R$ ${differenceInDays(endDate, startDate) * pricePerDay}` : "R$0"}</p>
             </div>
 
             <div className=' w-full pb-10 border-b border-grayPrimary'>
