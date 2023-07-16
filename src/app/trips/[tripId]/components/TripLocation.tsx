@@ -1,11 +1,13 @@
 import * as React from 'react';
 import Image from 'next/image';
+import Button from '@/components/Button';
 
 interface TripLocationProps {
     location: string
+    locationDescription: string
 }
 
-const TripLocation = ({ location }: TripLocationProps) => {
+const TripLocation = ({ location, locationDescription }: TripLocationProps) => {
     return (
         <div className="p-5">
             <h2 className="font-semibold text-primaryDarker mb-5 lg:text-xl">Localização</h2>
@@ -20,7 +22,9 @@ const TripLocation = ({ location }: TripLocationProps) => {
                     className="rounded-lg shadow-md"
                 />
             </div>
-            <p className='text-secondary text-sm font-semibold mt-3'>{location}</p>
+            <h3 className='text-secondary text-sm font-semibold mt-3'>{location}</h3>
+            <p className='text-xs text-secondary mt-2 leading-5'>{locationDescription}</p>
+            <Button variant='outlined' className='w-full mt-5'>Ver no Google Maps</Button>
         </div>
     );
 }

@@ -24,7 +24,7 @@ const Header = () => {
                     <CgProfile size={25} />
 
                     {loginMenuIsOpen && (
-                        <div className="absolute top-12 left-0 h-full w-full bg-white rounded-lg shadow-md flex flex-col justify-center items-center">
+                        <div className="z-50 absolute top-12 left-0 h-full w-full bg-white rounded-lg shadow-md flex flex-col justify-center items-center">
                             <button onClick={handleLoginClick} className='text-primary text-sm font-semibold'>Login</button>
                         </div>
                     )}
@@ -39,7 +39,7 @@ const Header = () => {
                     <Image className='rounded-full' height={30} width={30} src={data.user.image!} alt={data.user.name!} />
 
                     {menuIsOpen && (
-                        <div className="absolute top-12 left-0 h-full w-full bg-white rounded-lg shadow-md flex flex-col justify-center items-center">
+                        <div className="z-50 absolute top-12 left-0 h-full w-full bg-white rounded-lg shadow-md flex flex-col justify-center items-center">
                             <button onClick={handleLogoutClick} className='text-primary text-sm font-semibold'>Logout</button>
                         </div>
                     )}
