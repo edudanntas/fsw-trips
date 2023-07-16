@@ -9,7 +9,9 @@ import * as React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
 interface TripReservationProps {
-    trip: Trip
+    tripStartDate: Date;
+    tripEndDate: Date;
+    maxGuests: number;
 }
 
 interface TripReservationForm {
@@ -18,12 +20,14 @@ interface TripReservationForm {
     endDate: Date | null;
 }
 
-const TripReservation = ({ trip }: TripReservationProps) => {
-    const { register, handleSubmit, formState: { errors }, control } = useForm<TripReservationForm>()
+const TripReservation = ({ maxGuests, tripStartDate, tripEndDate }: TripReservationProps) => {
+    const { register, handleSubmit, formState: { errors }, control, watch } = useForm<TripReservationForm>()
 
     const onSubmit = (data: any) => {
 
     }
+
+    const startDate = watch("startDate");
 
     return (
         <div className='flex flex-col px-5'>
@@ -43,7 +47,9 @@ const TripReservation = ({ trip }: TripReservationProps) => {
                         selected={field.value}
                         error={!!errors.startDate}
                         errorMessage={errors.startDate?.message}
-                        className='w-full' />}
+                        className='w-full'
+                        minDate={tripStartDate}
+                    />}
                 />
                 <Controller
                     name='endDate'
@@ -60,7 +66,10 @@ const TripReservation = ({ trip }: TripReservationProps) => {
                         selected={field.value}
                         error={!!errors.endDate}
                         errorMessage={errors.endDate?.message}
-                        className='w-full' />}
+                        className='w-full'
+                        maxDate={tripEndDate}
+                        minDate={startDate ?? tripStartDate}
+                    />}
                 />
             </div>
             <Input {...register("guests", {
@@ -68,7 +77,7 @@ const TripReservation = ({ trip }: TripReservationProps) => {
                     value: true,
                     message: "Número de hóspedes é obrigatório.",
                 },
-            })} placeholder={`Número de Hospedes (Máx: ${trip.maxGuests})`} className='mt-4'
+            })} placeholder={`Número de Hospedes (Máx: ${maxGuests})`} className='mt-4'
                 error={!!errors?.guests}
                 errorMessage={errors?.guests?.message}
             />
