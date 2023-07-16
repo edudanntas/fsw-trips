@@ -85,7 +85,7 @@ const TripReservation = ({ maxGuests, tripStartDate, tripEndDate, pricePerDay }:
                 errorMessage={errors?.guests?.message}
             />
             <div className="flex justify-between mt-3">
-                <p className='font-medium text-sm text-secondary'>{(startDate && endDate) ? `Total (${differenceInDays(endDate, startDate)} Noites)` : "Total (0 Noites)"}</p>
+                <p className='font-medium text-sm text-secondary'>{(startDate && endDate) ? `Total (${differenceInDays(endDate, startDate)} Noites)` : "Total (0 noites)"}</p>
                 <p className='font-medium text-sm text-secondary'>{(startDate && endDate) ? `R$ ${differenceInDays(endDate, startDate) * pricePerDay}` : "R$0"}</p>
             </div>
 
