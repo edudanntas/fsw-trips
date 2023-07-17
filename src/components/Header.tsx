@@ -34,8 +34,6 @@ const Header = () => {
                 </div>
             )}
 
-            {/* <button className='text-primary text-sm font-semibold' onClick={handleLoginClick}>Login</button> */}
-
             {status === 'authenticated' && data.user && (
                 <div className="flex items-center gap-3 border-solid border-grayPrimary border-2 rounded-full p-2 relative">
                     <AiOutlineMenu onClick={handleMenuClick} size={16} className='cursor-pointer' />
