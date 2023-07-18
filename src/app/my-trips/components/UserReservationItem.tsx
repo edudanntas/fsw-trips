@@ -13,10 +13,11 @@ interface UserReservationItemProps {
         include: {
             trip: true;
         }
-    }>
+    }>;
+    fetchTrips: () => void;
 }
 
-const UserReservationItem = ({ reservation }: UserReservationItemProps) => {
+const UserReservationItem = ({ reservation, fetchTrips }: UserReservationItemProps) => {
     const router = useRouter();
 
     const { trip } = reservation;
@@ -32,7 +33,7 @@ const UserReservationItem = ({ reservation }: UserReservationItemProps) => {
 
         toast.success('Reserva cancelada com sucesso!', { position: 'bottom-center' });
 
-        router.push('/my-trips');
+        fetchTrips()
     }
 
     return (
