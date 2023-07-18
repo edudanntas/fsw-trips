@@ -102,7 +102,7 @@ const TripConfirmation = ({ params }: { params: { tripId: string } }) => {
 
                 <div className="flex justify-between mt-1">
                     <p className="text-primaryDarker">Total:</p>
-                    <p className="font-medium">R${totalPrice}</p>
+                    <p className="font-medium">R${totalPrice.toLocaleString('pt-BR')}</p>
                 </div>
             </div>
 
