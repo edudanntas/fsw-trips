@@ -42,7 +42,7 @@ const Header = () => {
 
                     {menuIsOpen && (
                         <div className="z-50 absolute top-12 left-0 h-[100px] w-full bg-white rounded-lg shadow-md flex flex-col justify-center items-center">
-                            <Link href='/my-trips'>
+                            <Link href='/my-trips' onClick={() => setMenuIsOpen(false)}>
                                 <button className='text-primary text-sm pb-2 border-b border-primarylight border-solid font-semibold'>Minhas Viagens</button>
                             </Link>
                             <button onClick={handleLogoutClick} className='text-primary text-sm pt-2 font-semibold'>Logout</button>
