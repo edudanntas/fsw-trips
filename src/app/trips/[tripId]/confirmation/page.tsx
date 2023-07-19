@@ -53,7 +53,7 @@ const TripConfirmation = ({ params }: { params: { tripId: string } }) => {
     if (!trip) return null;
 
     const handleFinishReservation = async () => {
-        const res = await fetch(`http://localhost:3000/api/payment`, {
+        const res = await fetch(`/api/payment`, {
             method: "POST",
             body: Buffer.from(JSON.stringify({
                 tripId: params.tripId,
