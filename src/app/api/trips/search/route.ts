@@ -58,7 +58,7 @@ const generateSearchQuery = (text: string, startDate?: string | null, budget?: s
 export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
 
-    const text = searchParams.get('text');
+    const text = decodeURIComponent(searchParams.get('text') ?? "");
     const startDate = searchParams.get('startDate');
     const budget = searchParams.get('budget');
 
