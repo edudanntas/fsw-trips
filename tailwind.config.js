@@ -15,6 +15,7 @@ module.exports = {
         secondary: '#312A4F',
         primarylight: '#DDD5EA',
         grayPrimary: '#BBBFBF',
+        graySecondary: '#717171',
         walterwhite: '#F5F5F5',
       },
     },
