@@ -6,6 +6,9 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 import { AiOutlineMenu } from 'react-icons/ai'
 import { CgProfile } from 'react-icons/cg'
 import Link from 'next/link';
+import { metadata } from '@/app/layout';
+import Head from 'next/head';
+
 
 const Header = () => {
     const [menuIsOpen, setMenuIsOpen] = React.useState(false);
