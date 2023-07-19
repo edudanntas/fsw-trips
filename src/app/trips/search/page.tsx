@@ -21,13 +21,13 @@ const Trip = () => {
         fetchTrips();
     }, [])
     return (
-        <div className='container mx-auto flex flex-col p-5 items-center'>
-            <div className='flex flex-col items-center gap-1 mb-2'>
-                <h1 className='font-semibold text-xl text-secondary'>Hospedagens Encontradas</h1>
-                <p className='text-graySecondary font-medium'>{trips.length > 0 ? "Listamos os melhores locais para você!" : "Poxa, não encontramos nada por aqui =("}</p>
+        <div className='container mx-auto flex flex-col p-5 items-center lg:items-start'>
+            <div className='flex flex-col items-center gap-1 mb-2 lg:gap-5 lg:items-start'>
+                <h1 className='font-semibold text-xl text-secondary lg:text-[2.5rem]'>Hospedagens Encontradas</h1>
+                <p className='text-graySecondary font-medium lg:text-base'>{trips.length > 0 ? "Listamos os melhores locais para você!" : "Poxa, não encontramos nada por aqui =("}</p>
             </div>
 
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 lg:grid lg:grid-cols-4 lg:mt-10 lg:pb-16">
                 {trips?.map((trip => <TripItem key={trip.id} trip={trip} />))}
             </div>
         </div>
