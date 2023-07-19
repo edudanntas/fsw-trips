@@ -12,7 +12,14 @@ const Trip = () => {
 
     useEffect(() => {
         const fetchTrips = async () => {
-            const response = await fetch(`/api/trips/search?text=${searchParams.get('text') ?? ""}&startDate=${searchParams.get('startDate')}&budget=${searchParams.get('budget')}`)
+            const searchText = searchParams.get('text') ?? "";
+            const searchTextEncoded = `?text=${encodeURIComponent(searchText)}`;
+
+            const response = await fetch(`/api/trips/search${searchTextEncoded}&startDate=${searchParams.get('startDate')}&budget=${searchParams.get('budget')}`);
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
 
             const data = await response.json();
 

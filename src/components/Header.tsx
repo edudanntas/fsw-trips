@@ -17,7 +17,7 @@ const Header = () => {
     const handleLoginMenuClick = () => setLoginMenuIsOpen(!loginMenuIsOpen);
 
     return (
-        <div className="container mx-auto p-5 flex items-center justify-between">
+        <div className="container mx-auto p-5 flex items-center justify-between lg:border-b lg:border-grayPrimary">
             <Link href='/'>
                 <Image width={30} height={32} src='/logo.svg' alt='Logo' />
             </Link>
