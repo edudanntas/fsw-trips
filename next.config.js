@@ -10,6 +10,22 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'images.unsplash.com',
             },
+            {
+                protocol: 'https',
+                hostname: 'cf.bstatic.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'static51.com-hotel.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'q-xx.bstatic.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'dynamic-media-cdn.tripadvisor.com',
+            }
         ],
     },
 }
