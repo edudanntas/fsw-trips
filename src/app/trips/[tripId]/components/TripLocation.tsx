@@ -13,7 +13,7 @@ interface TripLocationProps {
 const TripLocation = ({ location, locationDescription, trip }: TripLocationProps) => {
 
     const handleGoToGoogleMaps = () => {
-        const newTab = window.open(`https://www.google.com/maps/place/${trip.latitude},${trip.longitude}`, '_blank');
+        const newTab = window.open(`https://www.google.com/maps/place/${location}`, '_blank');
     }
 
     return (

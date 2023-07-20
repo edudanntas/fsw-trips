@@ -95,7 +95,7 @@ const TripReservation = ({ tripId, maxGuests, tripStartDate, tripEndDate, priceP
                         error={!!errors.startDate}
                         errorMessage={errors.startDate?.message}
                         className='w-full'
-                        minDate={tripStartDate}
+                        minDate={new Date() ?? tripStartDate}
                     />}
                 />
                 <Controller
@@ -135,7 +135,7 @@ const TripReservation = ({ tripId, maxGuests, tripStartDate, tripEndDate, priceP
             />
             <div className="flex justify-between mt-3">
                 <p className='font-medium text-sm text-secondary'>{(startDate && endDate) ? `Total (${differenceInDays(endDate, startDate)} Noites)` : "Total (0 noites)"}</p>
-                <p className='font-medium text-sm text-secondary'>{(startDate && endDate) ? `R$ ${differenceInDays(endDate, startDate) * pricePerDay}` : "R$0"}</p>
+                <p className='font-medium text-sm text-secondary'>{(startDate && endDate) ? `R$ ${(differenceInDays(endDate, startDate) * pricePerDay).toLocaleString('pt-BR')}` : "R$0"}</p>
             </div>
 
             <div className=' w-full pb-10 border-b border-grayPrimary lg:border-none lg:pb-0'>
