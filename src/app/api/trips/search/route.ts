@@ -58,7 +58,8 @@ const generateSearchQuery = (text: string, startDate?: string | null, budget?: s
 export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
 
-    const text = decodeURIComponent(searchParams.get('text') ?? "");
+    const text = searchParams.get('text');
+    const textmodified = text?.replace(/ /g, '&');
     const startDate = searchParams.get('startDate');
     const budget = searchParams.get('budget');
 
@@ -69,7 +70,7 @@ export async function GET(request: Request) {
     }
 
     const trips = await prisma.trip.findMany({
-        where: generateSearchQuery(text, startDate, budget)
+        where: generateSearchQuery(textmodified ?? "", startDate, budget)
     });
 
     return new NextResponse(JSON.stringify(trips), { status: 200 });
