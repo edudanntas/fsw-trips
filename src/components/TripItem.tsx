@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 import ReactCountryFlag from "react-country-flag";
 
+
 interface TripItemProps {
     trip: Trip;
 }
