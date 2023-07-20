@@ -1,9 +1,9 @@
 'use client'
 import * as React from 'react';
 import Button from '@/components/Button';
-import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
 import { Trip } from '@prisma/client';
 import TripMap from './TripMap';
+import { useRouter } from 'next/navigation';
 interface TripLocationProps {
     location: string
     locationDescription: string
@@ -11,6 +11,10 @@ interface TripLocationProps {
 }
 
 const TripLocation = ({ location, locationDescription, trip }: TripLocationProps) => {
+
+    const handleGoToGoogleMaps = () => {
+        const newTab = window.open(`https://www.google.com/maps/place/${trip.latitude},${trip.longitude}`, '_blank');
+    }
 
     return (
         <div className="p-5 lg:p-0 lg:mt-12 lg:pb-20">
@@ -24,7 +28,7 @@ const TripLocation = ({ location, locationDescription, trip }: TripLocationProps
             </div>
             <h3 className='text-secondary text-sm font-semibold mt-3 lg:text-base lg:mt-5'>{location}</h3>
             <p className='text-xs text-secondary mt-2 leading-5 lg:text-sm lg:mt-4'>{locationDescription}</p>
-            <Button variant='outlined' className='w-full mt-5'>Ver no Google Maps</Button>
+            <Button onClick={handleGoToGoogleMaps} variant='outlined' className='w-full mt-5'>Ver no Google Maps</Button>
         </div>
     );
 
