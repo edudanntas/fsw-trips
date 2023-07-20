@@ -18,12 +18,13 @@ const UserAuthentiticate = () => {
             {status === 'unauthenticated' && (
                 <div>
                     <div className="flex flex-col items-center">
-                        <h1 className='font-semibold text-primaryDarker text-xl'>Poxa, parece que não te conheço</h1>
-                        <p className='text-secondary text-sm mt-2 text-center'>Para continuar, faça login ou crie uma conta</p>
+                        <h1 className='font-semibold text-secondary text-xl lg:text-[2.5rem] lg:mt-5 lg:hidden'>Poxa, parece que não te conheço</h1>
+                        <h1 className='hidden lg:block lg:text-[2.5rem] lg:mt-5 lg:font-semibold lg:text-secondary'>Poxa, parece que ainda não te conheço</h1>
+                        <p className='text-secondary text-sm mt-2 text-center lg:text-xl lg:mt-4'>Para continuar, faça login ou crie uma conta</p>
                     </div>
-                    <div className="flex flex-col gap-4 mt-6">
-                        <Button onClick={handleLoginClick}>Entrar</Button>
-                        <Button variant='outlined'>Criar conta</Button>
+                    <div className="flex flex-col gap-4 mt-6 lg:flex lg:flex-row lg:justify-center">
+                        <Button className='lg:w-[30%]' onClick={handleLoginClick}>Entrar</Button>
+                        <Button className='lg:w-[30%]' variant='outlined'>Criar conta</Button>
                     </div>
                 </div>
             )}

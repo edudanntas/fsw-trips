@@ -52,7 +52,7 @@ const TripSearch = () => {
                     <Controller
                         name='budget'
                         control={control}
-                        render={({ field }) => <CurrencyInput className='w-full' placeholder='Orçamento' onValueChange={field.onChange as any} value={field.value} onBlur={field.onBlur} />}
+                        render={({ field }) => <CurrencyInput className='w-full' placeholder='Preço por dia' onValueChange={field.onChange as any} value={field.value} onBlur={field.onBlur} />}
                     />
 
                 </div>
