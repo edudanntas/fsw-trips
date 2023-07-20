@@ -44,7 +44,7 @@ const TripConfirmation = ({ params }: { params: { tripId: string } }) => {
         }
 
         if (status === "unauthenticated") {
-            router.push("/")
+            router.push("/user/signin/unauthenticated")
         }
 
         fetchTrip();
