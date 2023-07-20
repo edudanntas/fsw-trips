@@ -34,7 +34,7 @@ const TripDetails = async ({ params }: { params: { tripId: string } }) => {
                     <TripHighlight highlights={trip.highlights} />
                 </div>
             </div>
-            <TripLocation location={trip.location} locationDescription={trip.locationDescription} />
+            <TripLocation trip={trip} location={trip.location} locationDescription={trip.locationDescription} />
         </div>
     );
 }

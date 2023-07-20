@@ -1,20 +1,33 @@
-'use client'
 import { GoogleMap, Marker, useLoadScript } from '@react-google-maps/api';
+import { Trip } from '@prisma/client';
 import * as React from 'react';
-import { useMemo } from 'react';
 
+interface TripMapProps {
+    trip: Trip;
+}
 
-const TripMap = () => {
-    const { isLoaded } = useLoadScript({ googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY! })
+const TripMap: React.FC<TripMapProps> = ({ trip }) => {
+    const { isLoaded, loadError } = useLoadScript({
+        googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY!,
+    });
 
-    const center = useMemo(() => ({ lat: 40.633354, lng: 14.602745 }), []);
+    if (loadError) {
+        return <div>Error loading Google Maps</div>;
+    }
 
-    if (!isLoaded) return <div>Loading...</div>
+    if (!isLoaded) {
+        return <div>Loading...</div>;
+    }
+
+    const mapContainerStyle = {
+        width: '100%',
+        height: '100%',
+    };
 
     const customIcon = {
         url: '/map-marker.svg',
         scaledSize: new window.google.maps.Size(50, 50),
-    }
+    };
 
     const customMapStyles = {
         disableDefaultUI: true,
@@ -77,14 +90,22 @@ const TripMap = () => {
         ]
     }
 
-    const mapContainerStyle = {
-        width: '100%',
-        height: '100%', // Ajuste a altura do mapa conforme necessário
+    const center = {
+        lat: trip.latitude,
+        lng: trip.longitude,
     };
 
-    return <GoogleMap mapContainerStyle={mapContainerStyle} zoom={15} center={center} options={customMapStyles}>
-        <Marker position={center} icon={customIcon} />
-    </GoogleMap >;
-}
+    return (
+        <GoogleMap
+            mapContainerStyle={mapContainerStyle}
+            zoom={13}
+            center={center}
+            options={customMapStyles}>
+            <Marker
+                position={center}
+                icon={customIcon} />
+        </GoogleMap >
+    );
+};
 
 export default TripMap;
