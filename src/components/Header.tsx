@@ -7,6 +7,7 @@ import { AiOutlineMenu } from 'react-icons/ai'
 import { CgProfile } from 'react-icons/cg'
 import Link from 'next/link';
 
+
 const Header = () => {
     const [menuIsOpen, setMenuIsOpen] = React.useState(false);
     const [loginMenuIsOpen, setLoginMenuIsOpen] = React.useState(false);
