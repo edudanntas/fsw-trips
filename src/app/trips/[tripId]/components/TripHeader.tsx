@@ -1,26 +1,55 @@
+'use client'
 import * as React from 'react';
 import Image from 'next/image';
 import ReactCountryFlag from "react-country-flag";
 import { Trip } from '@prisma/client';
+import { Navigation, Pagination } from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import 'swiper/css/scrollbar'
 
 interface TripHeaderDetails {
     trip: Trip
 }
 
 const TripHeader = ({ trip }: TripHeaderDetails) => {
+
     return (
         <div className="flex flex-col">
-            <div className="relative h-[300px] w-full lg:hidden">
-                <Image
-                    src={trip.coverImage}
-                    fill
-                    style={{
-                        objectFit: "cover",
-                    }}
-                    alt={trip.name}
-                />
+            <div className="lg:hidden">
+                <Swiper
+                    spaceBetween={50}
+                    slidesPerView={1}
+                    navigation={true}
+                    pagination={true}
+                    modules={[Navigation, Pagination]}
+                >
+                    <SwiperSlide>
+                        <Image
+                            className="mb-5 h-[300px] w-full object-cover"
+                            src={trip.coverImage}
+                            alt={trip.name}
+                            width={393}
+                            height={208}
+                        />
+                    </SwiperSlide>
+                    {trip.imagesUrl.map((image, index) => {
+                        return (
+                            <SwiperSlide key={index}>
+                                <Image
+                                    className="mb-5 h-[300px] w-full object-cover"
+                                    src={image}
+                                    alt={trip.name}
+                                    width={393}
+                                    height={208}
+                                />
+                            </SwiperSlide>
+                        )
+                    })}
+                </Swiper>
             </div>
-
             <div className="hidden lg:grid grid-cols-[2fr,1fr,1fr] gap-2 grid-rows-2 lg:order-2">
                 <div className="relative row-span-2">
                     <Image
@@ -101,3 +130,16 @@ const TripHeader = ({ trip }: TripHeaderDetails) => {
 }
 
 export default TripHeader;
+
+
+
+
+
+{/* <Image
+                    src={trip.coverImage}
+                    fill
+                    style={{
+                        objectFit: "cover",
+                    }}
+                    alt={trip.name}
+                /> */}

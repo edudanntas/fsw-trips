@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata = {
   title: 'Trip Reservation',
   description: 'Created by Eduardo',
-  favicon: '/map-marker.svg',
+  favicon: '/favicon.ico',
 }
 
 export default function RootLayout({
